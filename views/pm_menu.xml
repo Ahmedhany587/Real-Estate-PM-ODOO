@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="pm_root_menu" name="Real Estate Projects" sequence="10"/>
+
+    <menuitem
+            id="pm_contract_menu"
+            name="Contracts"
+            parent='pm_root_menu'
+            action="contract_action"
+            sequence="10"
+    />
+</odoo>
