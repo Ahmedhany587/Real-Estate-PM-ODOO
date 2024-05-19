@@ -12,6 +12,7 @@
                     </group>
                     <group>
                         <field name="contract_date"/>
+                        <field name="project_id"/>
                     </group>
                 </sheet>
             </form>

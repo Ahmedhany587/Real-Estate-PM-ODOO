@@ -11,4 +11,11 @@
             action="contract_action"
             sequence="10"
     />
+    <menuitem
+            id="pm_project_menu"
+            name="Projects"
+            parent='pm_root_menu'
+            action="pm_project_action"
+            sequence="20"
+    />
 </odoo>

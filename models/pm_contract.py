@@ -14,3 +14,6 @@ class Contract(models.Model):
         tracking=1)
 
     contract_date = fields.Date(string="Contract Date:", required=False, default=lambda self: fields.Date.today())
+
+    project_id = fields.Many2one(comodel_name='pm.project', string="Project", ondelete='restrict')  # Restrict deletion
+
