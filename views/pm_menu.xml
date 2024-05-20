@@ -25,4 +25,11 @@
             action="pm_term_action"
             sequence="20"
     />
+    <menuitem
+            id="pm_sub_term_menu"
+            name="SubTerms"
+            parent='pm_root_menu'
+            action="pm_sub_term_action"
+            sequence="20"
+    />
 </odoo>

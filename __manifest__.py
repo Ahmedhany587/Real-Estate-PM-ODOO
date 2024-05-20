@@ -20,7 +20,7 @@
     'version': '1.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','product'],
 
     # always loaded
     'data': [
@@ -31,6 +31,7 @@
         'views/pm_contract_view.xml',
         'views/pm_project_view.xml',
         'views/pm_term_view.xml',
+        'views/pm_sub_term_view.xml',
         
         # menu
         'views/pm_menu.xml',
