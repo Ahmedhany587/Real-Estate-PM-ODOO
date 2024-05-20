@@ -24,9 +24,15 @@
 
     # always loaded
     'data': [
+        # security
         'security/ir.model.access.csv',
+        
+        # views
         'views/pm_contract_view.xml',
         'views/pm_project_view.xml',
+        'views/pm_term_view.xml',
+        
+        # menu
         'views/pm_menu.xml',
     ],
     # only loaded in demonstration mode

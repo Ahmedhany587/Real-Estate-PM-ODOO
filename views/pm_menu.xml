@@ -18,4 +18,11 @@
             action="pm_project_action"
             sequence="20"
     />
+    <menuitem
+            id="pm_term_menu"
+            name="Terms"
+            parent='pm_root_menu'
+            action="pm_term_action"
+            sequence="20"
+    />
 </odoo>
