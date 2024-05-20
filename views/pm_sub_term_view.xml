@@ -2,6 +2,45 @@
 
 <odoo>
 
+    <record id="pm_sub_term_form" model="ir.ui.view">
+        <field name="name">pm_sub_term_form</field>
+        <field name="model">pm.subterm</field>
+        <field name="arch" type="xml">
+            <form string="Sub Term">
+                <sheet>
+                    <h1>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="term_id"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="cost"/>
+                    </group>
+                    <notebook>
+                        <page string="Sub Term Products">
+                            <field name="product_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="standard_price"/>
+                                    <field name="detailed_type"/>
+                                </tree>
+                            </field> 
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <record id="pm_sub_term_action" model="ir.actions.act_window">
         <field name="name">Sub Term</field>
         <field name="res_model">pm.subterm</field>
