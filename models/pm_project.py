@@ -19,10 +19,3 @@ class Project(models.Model):
         for rec in self:
             rec.total_cost = sum(rec.term_ids.mapped('total_cost'))
 
-    def show_pr_form(self):
-        return {
-            'type': 'ir.actions.act_window',
-            'res_model': 'pm.purchase.request',
-            'view_mode': 'form',
-            'target': 'new',
-        }

@@ -4,7 +4,7 @@ class PurchaseRequest(models.Model):
     _name = 'pm.purchase.request'
 
     name = fields.Char(string='Name', required=True)
-    term_id = fields.Many2one(comodel_name='pm.term', string="Selected Term")
+    term_id = fields.Many2one(comodel_name='pm.term', string="Selected Term", default = lambda self: self.env.context.get('term_id', None))
 
     vendor_id = fields.Many2one(comodel_name='res.partner', string="Vendor", ondelete='restrict')
     
@@ -58,7 +58,9 @@ class PurchaseRequest(models.Model):
                     'quantity': 0
                 })
                 rec.purchase_request_line_ids |= line
-            
+
+    def action_request(self):
+        self.action_sent()
 
 
 class PurchaseRequestLine(models.Model):

@@ -27,6 +27,9 @@
         # security
         'security/ir.model.access.csv',
         
+        # wizard
+        'wizard/pm_purchase_request.xml',
+        
         # views
         'views/pm_contract_view.xml',
         'views/pm_project_view.xml',

@@ -20,3 +20,15 @@ class Term(models.Model):
     def _compute_total_cost(self):
         for rec in self:
             rec.total_cost = sum(rec.sub_term_ids.mapped('cost'))
+
+    def show_wizard(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'pm.purchase.request',
+            'view_id': self.env.ref('pm_real_estate.view_pm_purchase_request_wiz_form').id,
+            'view_mode': 'form',
+            'target': 'new',
+            'context' : {
+                'term_id' : self.id
+            }
+        }
