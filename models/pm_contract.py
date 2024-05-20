@@ -17,3 +17,15 @@ class Contract(models.Model):
 
     project_id = fields.Many2one(comodel_name='pm.project', string="Project", ondelete='restrict')  # Restrict deletion
 
+    doc_ids = fields.One2many('pm.document', 'contract_id', string='Documents')
+
+class Document(models.Model):
+    _name = 'pm.document'
+    _description = 'PM Document'
+
+
+    name = fields.Char(string='Name')
+    document = fields.Binary(string='Document')
+
+    # The property that the document belongs to
+    contract_id = fields.Many2one('pm.contract', string='Contract')
