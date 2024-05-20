@@ -39,4 +39,11 @@
             action="pm_purchase_request_action"
             sequence="40"
     />
+    <menuitem
+            id="pm_employee_menu"
+            name="Employees"
+            parent='pm_root_menu'
+            action="pm_employee_action"
+            sequence="50"
+    />
 </odoo>
