@@ -13,11 +13,18 @@ class Employee(models.Model):
 
     working_days = fields.Integer(string='Worked days')
     daily_rate = fields.Integer(string='Daily Rate')
+    cost = fields.Integer(string='Emp cost on company', compute = "_compute_cost")
 
     start_date = fields.Date(string='Start Date', required=True)
     end_date = fields.Date(string='End Date')
 
     term_ids = fields.Many2many(comodel_name='pm.term', string="Work on", ondelete='restrict')
+
+    #### Compute ####
+    @api.depends('working_days','daily_rate')
+    def _compute_cost(self):
+        for rec in self:
+            rec.cost = rec.working_days * rec.daily_rate
 
     @api.model
     def create(self, vals):
