@@ -9,9 +9,21 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                    </group>
+                    <group>
                         <field name="contract_id"/>
                         <field name="customer"/>
                     </group>
+                    <notebook>
+                        <page string="Project Terms">
+                            <field name="term_ids" >
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="total_cost"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
