@@ -14,7 +14,23 @@ class SubTerm(models.Model):
 
     cost  = fields.Integer(string='Cost', default=0, compute='_compute_cost')
 
+    #### Compute ####
     @api.depends('product_ids')
     def _compute_cost(self):
         for rec in self:
             rec.cost = sum(rec.product_ids.mapped('standard_price'))
+
+    #### Constraints ####
+    @api.constrains('start_date', 'end_date')
+    def _check_dates(self):
+        for rec in self:
+            if not rec.term_id:
+                raise models.ValidationError('Sub-Term must be within a Term')
+            
+            if rec.end_date < rec.start_date:
+                raise models.ValidationError('End Date must be greater than Start Date')
+            
+            if rec.start_date < rec.term_id.start_date or rec.end_date > rec.term_id.end_date:
+                raise models.ValidationError('Start Date and End Date must be within the Term')
+            
+        return True
