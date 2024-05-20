@@ -30,6 +30,13 @@
             name="SubTerms"
             parent='pm_root_menu'
             action="pm_sub_term_action"
-            sequence="20"
+            sequence="30"
+    />
+    <menuitem
+            id="pm_purchase_request_menu"
+            name="Purchase Requests"
+            parent='pm_root_menu'
+            action="pm_purchase_request_action"
+            sequence="40"
     />
 </odoo>
