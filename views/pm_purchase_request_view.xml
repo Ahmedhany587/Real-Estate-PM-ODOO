@@ -7,22 +7,38 @@
         <field name="model">pm.purchase.request</field>
         <field name="arch" type="xml">
             <form>
-                <!-- Other form fields here -->
-                <group>
+                <header>
+                    <button name="action_draft" string="Reset"  type="object" class="oe_highlight"
+                    invisible='state == "draft"'/>
 
-                    <field name="name"/>
-                    <field name="term_id"/>
-                    <!-- <field name="product_ids" widget="many2many_tags"/> -->
-                </group>
-                <group>
+                    <button name="action_sent" string="Sent"  type="object" class="oe_highlight"
+                    invisible='state != "draft"'/>
 
-                    <field name="purchase_request_line_ids">
-                        <tree editable="bottom">
-                            <field name="product_id" readonly='1'/>
-                            <field name="quantity"/>
-                        </tree>
-                    </field>
-                </group>
+                    <button name="action_confirm" string="Confirm"  type="object" class="oe_highlight"
+                        invisible='state != "sent"'/>
+
+                    <button name="action_cancel" string="Cancel"  type="object" class="oe_highlight"
+                        invisible='state != "sent"'/>
+                    
+
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft, sent, confirm" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="vendor_id"/>
+                        <field name="term_id"/>
+                    </group>
+                    <group>
+                        <field name="purchase_request_line_ids" options="{'no_create': True}">
+                            <tree editable="top" >
+                                <field name="product_id" readonly='1'/>
+                                <field name="quantity"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
 
             </form>
         </field>
