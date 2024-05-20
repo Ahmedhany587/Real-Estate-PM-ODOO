@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class SubTerm(models.Model):
     _name = 'pm.subterm'
@@ -11,3 +11,10 @@ class SubTerm(models.Model):
     term_id = fields.Many2one(comodel_name='pm.term', string="Term", ondelete='restrict')
 
     product_ids = fields.Many2many(comodel_name='product.template', string="Products", ondelete='restrict')
+
+    cost  = fields.Integer(string='Cost', default=0, compute='_compute_cost')
+
+    @api.depends('product_ids')
+    def _compute_cost(self):
+        for rec in self:
+            rec.cost = sum(rec.product_ids.mapped('standard_price'))
