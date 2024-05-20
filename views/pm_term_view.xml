@@ -38,6 +38,9 @@
                         <page string="Employees">
                             <field name="employee_ids" />
                         </page>
+                        <page string="Tools">
+                            <field name="tool_ids" />
+                        </page>
                     </notebook>
                 </sheet>
             </form>
