@@ -16,6 +16,8 @@
                     </group>
                     <notebook>
                         <page string="Project Terms">
+                            <button name="show_pr_form" string="Make PR" type="object" class="oe_highlight"/>
+
                             <field name="term_ids" >
                                 <tree>
                                     <field name="name"/>
