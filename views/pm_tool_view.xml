@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="pm_tool_action" model="ir.actions.act_window">
+        <field name="name">Tool</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pm.tool</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

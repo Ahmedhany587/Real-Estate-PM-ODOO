@@ -3,6 +3,7 @@ pm_real_estate.access_pm_project,access_pm_project,pm_real_estate.model_pm_proje
 pm_real_estate.access_pm_contract,access_pm_contract,pm_real_estate.model_pm_contract,base.group_user,1,1,1,1
 pm_real_estate.access_pm_document,access_pm_document,pm_real_estate.model_pm_document,base.group_user,1,1,1,1
 pm_real_estate.access_pm_employee,access_pm_employee,pm_real_estate.model_pm_employee,base.group_user,1,1,1,1
+pm_real_estate.access_pm_tool,access_pm_tool,pm_real_estate.model_pm_tool,base.group_user,1,1,1,1
 pm_real_estate.access_pm_term,access_pm_term,pm_real_estate.model_pm_term,base.group_user,1,1,1,1
 pm_real_estate.access_pm_subterm,access_pm_subterm,pm_real_estate.model_pm_subterm,base.group_user,1,1,1,1
 pm_real_estate.access_pm_subterm,access_pm_subterm,pm_real_estate.model_pm_subterm,base.group_user,1,1,1,1

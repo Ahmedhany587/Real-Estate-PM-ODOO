@@ -5,3 +5,4 @@ from . import pm_sub_term
 from . import pm_purchase_request
 from . import pm_product
 from . import pm_employee
+from . import pm_tool

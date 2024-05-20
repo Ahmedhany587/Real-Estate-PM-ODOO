@@ -46,4 +46,11 @@
             action="pm_employee_action"
             sequence="50"
     />
+    <menuitem
+            id="pm_tool_menu"
+            name="Tools"
+            parent='pm_root_menu'
+            action="pm_tool_action"
+            sequence="60"
+    />
 </odoo>

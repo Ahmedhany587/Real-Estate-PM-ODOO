@@ -10,5 +10,13 @@
             <field name="company_id" eval="False"/>
     
         </record>
+        <record id="seq_pm_tool" model="ir.sequence">
+            <field name="name">PM Tool</field>
+            <field name="code">pm.tool</field>
+            <field name="prefix">PM/T</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+    
+        </record>
     </data>
 </odoo>
