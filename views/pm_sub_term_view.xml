@@ -28,8 +28,9 @@
                     <notebook>
                         <page string="Sub Term Products">
                             <field name="product_ids">
-                                <tree>
+                                <tree editable="bottom">
                                     <field name="name"/>
+                                    <field name="needed_qty"/>
                                     <field name="standard_price"/>
                                     <field name="detailed_type"/>
                                 </tree>

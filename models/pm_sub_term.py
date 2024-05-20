@@ -18,7 +18,9 @@ class SubTerm(models.Model):
     @api.depends('product_ids')
     def _compute_cost(self):
         for rec in self:
-            rec.cost = sum(rec.product_ids.mapped('standard_price'))
+            prices = rec.product_ids.mapped('standard_price')
+            qties = rec.product_ids.mapped('needed_qty')
+            rec.cost = sum(qties[i] * prices[i] for i in range(len(prices)))
 
     #### Constraints ####
     @api.constrains('start_date', 'end_date')
