@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data noupdate="1">
+        <record id="seq_pm_employee" model="ir.sequence">
+            <field name="name">PM Employee</field>
+            <field name="code">pm.employee</field>
+            <field name="prefix">E</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+    
+        </record>
+        <record id="seq_pm_tool" model="ir.sequence">
+            <field name="name">PM Tool</field>
+            <field name="code">pm.tool</field>
+            <field name="prefix">PM/T</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+    
+        </record>
+    </data>
+</odoo>

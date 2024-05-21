@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="pm_term_form" model="ir.ui.view">
+        <field name="name">pm_term_form</field>
+        <field name="model">pm.term</field>
+        <field name="arch" type="xml">
+            <form string="Term">
+                <sheet>
+                    <h1>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="project_id"/>
+                            <field name="contractor_id"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="total_cost"/>
+                    </group>
+                    <notebook>
+                        <page string="SubTerms">
+                            <field name="sub_term_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="cost"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Employees">
+                            <field name="employee_ids" />
+                        </page>
+                        <page string="Tools">
+                            <field name="tool_ids" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pm_term_action" model="ir.actions.act_window">
+        <field name="name">Term</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pm.term</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

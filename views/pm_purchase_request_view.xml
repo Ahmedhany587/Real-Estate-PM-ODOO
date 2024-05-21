@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="view_pm_purchase_request_form" model="ir.ui.view">
+        <field name="name">pm.purchase.request.form</field>
+        <field name="model">pm.purchase.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_draft" string="Reset"  type="object" class="oe_highlight"
+                    invisible='state == "draft"'/>
+
+                    <button name="action_sent" string="Sent"  type="object" class="oe_highlight"
+                    invisible='state != "draft"'/>
+
+                    <button name="action_confirm" string="Confirm"  type="object" class="oe_highlight"
+                        invisible='state != "sent"'/>
+
+                    <button name="action_cancel" string="Cancel"  type="object" class="oe_highlight"
+                        invisible='state != "sent"'/>
+                    
+
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft, sent, confirm" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="vendor_id"/>
+                        <field name="term_id"/>
+                    </group>
+                    <group>
+                        <field name="purchase_request_line_ids" options="{'no_create': True}">
+                            <tree editable="top" >
+                                <field name="product_id" readonly='1'/>
+                                <field name="quantity"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    
+
+    <record id="pm_purchase_request_action" model="ir.actions.act_window">
+        <field name="name">Purchase Request action</field>
+        <field name="res_model">pm.purchase.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

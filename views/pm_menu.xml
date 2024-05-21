@@ -18,4 +18,39 @@
             action="pm_project_action"
             sequence="20"
     />
+    <menuitem
+            id="pm_term_menu"
+            name="Terms"
+            parent='pm_root_menu'
+            action="pm_term_action"
+            sequence="20"
+    />
+    <menuitem
+            id="pm_sub_term_menu"
+            name="SubTerms"
+            parent='pm_root_menu'
+            action="pm_sub_term_action"
+            sequence="30"
+    />
+    <menuitem
+            id="pm_purchase_request_menu"
+            name="Purchase Requests"
+            parent='pm_root_menu'
+            action="pm_purchase_request_action"
+            sequence="40"
+    />
+    <menuitem
+            id="pm_employee_menu"
+            name="Employees"
+            parent='pm_root_menu'
+            action="pm_employee_action"
+            sequence="50"
+    />
+    <menuitem
+            id="pm_tool_menu"
+            name="Tools"
+            parent='pm_root_menu'
+            action="pm_tool_action"
+            sequence="60"
+    />
 </odoo>
