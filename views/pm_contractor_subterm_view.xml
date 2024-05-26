@@ -13,6 +13,52 @@
         </field>
     </record>
 
+    <record id="contractor_subterm_form" model="ir.ui.view">
+        <field name="name">contractor.subterm.form</field>
+        <field name="model">pm.contractor.subterm</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_start" string="Start"  type="object" class="oe_highlight"
+                    invisible='state != "assigned"'/>
+                    
+                    <button name="action_finish" string="Finish"  type="object" class="oe_highlight"
+                    invisible='state != "started"'/>
+                    
+                    <button name="action_cancel" string="Cancel"  type="object" class="oe_highlight"
+                    invisible='state == "finished"'/>
+
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="assigned, started, finished" />
+                </header>
+                <sheet>
+                    <h1>
+                        <group>
+                            <field name="name" string="Name" />
+                        </group>
+                    </h1>
+                    <group>
+                        <field name="contractor_id"/>
+                        <field name="sub_term_id"/>
+                        <field name="service_id"/>
+                        <field name="product_ids" invisible='1'/>
+                    </group>
+                    <group>
+                        
+                        <group>
+                            <field name="start_date" string="Start Date" />
+                            <field name="end_date" string="End Date" />
+                        </group>
+                        <group>
+                            <field name="qty"/>
+                            <field name="progress" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <record id="contractor_subterm_action" model="ir.actions.act_window">
         <field name="name">Real Estate Contractor Subterm </field>
         <field name="type">ir.actions.act_window</field>

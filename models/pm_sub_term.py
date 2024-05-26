@@ -59,6 +59,24 @@ class ContractorSubTerm(models.Model):
     end_date = fields.Date(string='End Date', required=True)
     progress = fields.Integer(string='Progress', default=0)
 
+    state = fields.Selection(string='State', selection=[
+        ('assigned', 'Assigned'), 
+        ('started', 'Started'),
+        ('finished', 'Finished'),
+        ('cacelled', 'Cancelled'),
+        ], 
+        default='assigned')
+
+    #### Actions ####
+    def action_cancel(self):
+        self.state = 'cancelled'
+
+    def action_start(self):
+        self.state = 'started'
+
+    def action_finish(self):
+        self.state = 'finished'
+
     #### Compute ####
     @api.depends('sub_term_id','contractor_id')
     def _compute_name(self):
