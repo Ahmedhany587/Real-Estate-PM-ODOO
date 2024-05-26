@@ -50,9 +50,32 @@ class ContractorSubTerm(models.Model):
     contractor_id = fields.Many2one(comodel_name='res.partner', string="Contractor", ondelete='restrict')
     qty = fields.Integer(string="Quantity")
 
+    start_date = fields.Date(string='Start Date', required=True)
+    end_date = fields.Date(string='End Date', required=True)
+    progress = fields.Integer(string='Progress', default=0)
 
     #### Compute ####
     @api.depends('sub_term_id','contractor_id')
     def _compute_name(self):
         for rec in self:
             rec.name = f'{rec.sub_term_id.name} - {rec.contractor_id.name}'
+
+    #### Constraints ####
+    @api.constrains('start_date', 'end_date')
+    def _check_dates(self):
+        for rec in self:
+            if rec.end_date < rec.start_date:
+                raise models.ValidationError('End Date must be greater than Start Date')
+            
+            if rec.start_date < rec.sub_term_id.start_date or rec.end_date > rec.sub_term_id.end_date:
+                raise models.ValidationError('Start Date and End Date must be within the Sub-Term')
+            
+        return True
+    
+    @api.constrains('progress')
+    def _check_progress(self):
+        for rec in self:
+            if rec.progress < 0 or rec.progress > rec.qty:
+                raise models.ValidationError(f'Progress must be between 0 and {rec.qty}')
+            
+        return True

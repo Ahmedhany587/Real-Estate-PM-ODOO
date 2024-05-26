@@ -42,6 +42,9 @@
                                     <field name="sub_term_id" column_invisible="1"/>
                                     <field name="contractor_id"/>
                                     <field name="qty"/>
+                                    <field name="progress"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
                                 </tree>
                             </field> 
                         </page>
