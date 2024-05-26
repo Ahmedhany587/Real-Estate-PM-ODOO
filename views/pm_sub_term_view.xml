@@ -36,6 +36,15 @@
                                 </tree>
                             </field> 
                         </page>
+                        <page string="Contractors">
+                            <field name="contractor_subterm_ids">
+                                <tree editable="bottom">
+                                    <field name="sub_term_id" column_invisible="1"/>
+                                    <field name="contractor_id"/>
+                                    <field name="qty"/>
+                                </tree>
+                            </field> 
+                        </page>
                     </notebook>
                 </sheet>
             </form>

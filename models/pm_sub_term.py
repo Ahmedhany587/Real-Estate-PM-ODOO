@@ -14,6 +14,9 @@ class SubTerm(models.Model):
 
     cost  = fields.Integer(string='Cost', default=0, compute='_compute_cost')
 
+    contractor_subterm_ids = fields.One2many(comodel_name='pm.contractor.subterm', inverse_name='sub_term_id', 
+                                             string="Contractor Sub-Term", ondelete='restrict')
+
     #### Compute ####
     @api.depends('product_ids')
     def _compute_cost(self):
@@ -41,8 +44,15 @@ class ContractorSubTerm(models.Model):
     _name = 'pm.contractor.subterm'
     _description = 'Contractor Sub Term'
 
-    name = fields.Char(string='Name', required=True)
+    name = fields.Char(string='Name', compute = "_compute_name")
 
     sub_term_id = fields.Many2one(comodel_name='pm.subterm', string="Sub-Term", ondelete='restrict')
     contractor_id = fields.Many2one(comodel_name='res.partner', string="Contractor", ondelete='restrict')
     qty = fields.Integer(string="Quantity")
+
+
+    #### Compute ####
+    @api.depends('sub_term_id','contractor_id')
+    def _compute_name(self):
+        for rec in self:
+            rec.name = f'{rec.sub_term_id.name} - {rec.contractor_id.name}'
