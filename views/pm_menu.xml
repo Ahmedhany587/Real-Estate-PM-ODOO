@@ -53,4 +53,11 @@
             action="pm_tool_action"
             sequence="60"
     />
+    <menuitem
+            id="pm_contractor_subterm_menu"
+            name="Contractor"
+            parent='pm_root_menu'
+            action="contractor_subterm_action"
+            sequence="70"
+    />
 </odoo>

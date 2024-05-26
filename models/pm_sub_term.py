@@ -36,3 +36,13 @@ class SubTerm(models.Model):
                 raise models.ValidationError('Start Date and End Date must be within the Term')
             
         return True
+    
+class ContractorSubTerm(models.Model):
+    _name = 'pm.contractor.subterm'
+    _description = 'Contractor Sub Term'
+
+    name = fields.Char(string='Name', required=True)
+
+    sub_term_id = fields.Many2one(comodel_name='pm.subterm', string="Sub-Term", ondelete='restrict')
+    contractor_id = fields.Many2one(comodel_name='res.partner', string="Contractor", ondelete='restrict')
+    qty = fields.Integer(string="Quantity")
