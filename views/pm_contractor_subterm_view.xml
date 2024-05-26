@@ -2,10 +2,27 @@
 
 <odoo>
 
+    <record id="contractor_subterm_view_search" model="ir.ui.view">
+        <field name="name">contractor.subterm.search</field>
+        <field name="model">pm.contractor.subterm</field>
+        <field name="arch" type="xml">
+            <search string="Search contractor subterm">
+                <field name="contractor_id"/>
+                <filter name="group_by_contractor" string="Group By Contractor" context="{'group_by': 'contractor_id'}" />
+            </search>
+        </field>
+    </record>
+
     <record id="contractor_subterm_action" model="ir.actions.act_window">
         <field name="name">Real Estate Contractor Subterm </field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">pm.contractor.subterm</field>
         <field name="view_mode">tree,form</field>
+        <field name="context">
+            {
+                "search_default_group_by_contractor": 1,
+            }
+        </field>
+        
     </record>
 </odoo>
