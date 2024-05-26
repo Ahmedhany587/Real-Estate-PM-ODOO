@@ -47,6 +47,11 @@ class ContractorSubTerm(models.Model):
     name = fields.Char(string='Name', compute = "_compute_name")
 
     sub_term_id = fields.Many2one(comodel_name='pm.subterm', string="Sub-Term", ondelete='restrict')
+    product_ids = fields.Many2many(related='sub_term_id.product_ids', string="Products", ondelete='restrict')
+    
+    service_id = fields.Many2one(comodel_name='product.template', string="Service", 
+                                 domain="[('id', 'in', product_ids), ('detailed_type', '=', 'service')]",
+                                 ondelete='restrict')
     contractor_id = fields.Many2one(comodel_name='res.partner', string="Contractor", ondelete='restrict')
     qty = fields.Integer(string="Quantity")
 
