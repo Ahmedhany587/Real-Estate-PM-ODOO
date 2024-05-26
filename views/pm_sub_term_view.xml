@@ -31,6 +31,7 @@
                                 <tree editable="bottom">
                                     <field name="name"/>
                                     <field name="needed_qty"/>
+                                    <field name="assigned_qty"/>
                                     <field name="standard_price"/>
                                     <field name="detailed_type"/>
                                 </tree>

@@ -48,12 +48,12 @@ class ContractorSubTerm(models.Model):
 
     sub_term_id = fields.Many2one(comodel_name='pm.subterm', string="Sub-Term", ondelete='restrict')
     product_ids = fields.Many2many(related='sub_term_id.product_ids', string="Products", ondelete='restrict')
-    
+
     service_id = fields.Many2one(comodel_name='product.template', string="Service", 
                                  domain="[('id', 'in', product_ids), ('detailed_type', '=', 'service')]",
                                  ondelete='restrict')
     contractor_id = fields.Many2one(comodel_name='res.partner', string="Contractor", ondelete='restrict')
-    qty = fields.Integer(string="Quantity")
+    qty = fields.Integer(string="Quantity", default=0)
 
     start_date = fields.Date(string='Start Date', required=True)
     end_date = fields.Date(string='End Date', required=True)
@@ -84,3 +84,18 @@ class ContractorSubTerm(models.Model):
                 raise models.ValidationError(f'Progress must be between 0 and {rec.qty}')
             
         return True
+
+    #### Onchange ####
+    @api.onchange('qty')
+    def _onchange_qty(self):
+        if self.qty < 0:
+                raise models.ValidationError('Quantity must be greater than 0')
+            
+        old_qty = self._origin.qty
+        self.service_id.assigned_qty -= old_qty
+
+        free_qty = self.service_id.needed_qty - self.service_id.assigned_qty
+        if self.qty > free_qty:
+            raise models.ValidationError(f'Quantity must be at most {free_qty}')
+
+        self.service_id.assigned_qty += self.qty
