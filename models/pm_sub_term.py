@@ -67,6 +67,8 @@ class ContractorSubTerm(models.Model):
         ], 
         default='assigned')
 
+    qty_in = fields.Integer(string='Quantity In', default=0)
+
     #### Actions ####
     def action_cancel(self):
         self.state = 'cancelled'
@@ -76,6 +78,14 @@ class ContractorSubTerm(models.Model):
 
     def action_finish(self):
         self.state = 'finished'
+
+    def add_qty_in(self):
+        to_make = self.qty - self.progress
+        if self.qty_in > to_make:
+            raise models.ValidationError(f'Quantity In must be at most {to_make}')
+        
+        self.progress += self.qty_in
+        self.qty_in = 0
 
     #### Compute ####
     @api.depends('sub_term_id','contractor_id')

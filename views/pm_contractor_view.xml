@@ -12,7 +12,16 @@
                         <field name="name" />
                     </group>
                     <group>
-                        <field name="contractor_subterm_ids" />
+                        <field name="contractor_subterm_ids">
+                            <tree editable="bottom" create="false">
+                                <field name="state" readonly="1"/>
+                                <field name="service_id" readonly="1"/>
+                                <field name="qty_in" />
+                                <button name="add_qty_in" title="Add" type="object" icon="fa-plus"/>
+                                <field name="qty" readonly="1"/>
+                                <field name="progress" readonly="1"/>
+                            </tree>
+                        </field>
                     </group>
                 </sheet>
             </form>
