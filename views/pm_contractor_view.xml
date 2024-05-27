@@ -57,6 +57,7 @@
         <field name="res_model">res.partner</field>
         <field name="view_mode">tree,form</field>
     </record>
+    
 
     <record id="contractor_action_tree" model="ir.actions.act_window.view">
         <field name="sequence" eval="10"/>
