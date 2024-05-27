@@ -5,52 +5,83 @@
     <menuitem id="pm_root_menu" name="Real Estate Projects" sequence="10"/>
 
     <menuitem
-            id="pm_contract_menu"
-            name="Contracts"
-            parent='pm_root_menu'
-            action="contract_action"
-            sequence="10"
+        id="pm_contract_menu"
+        name="Contracts"
+        parent='pm_root_menu'
+        action="contract_action"
+        sequence="10"
     />
     <menuitem
+        id="pm_project_root_menu"
+        name="Projects"
+        parent='pm_root_menu'
+        sequence="20"
+    />
+        <menuitem
             id="pm_project_menu"
             name="Projects"
-            parent='pm_root_menu'
+            parent='pm_project_root_menu'
             action="pm_project_action"
-            sequence="20"
-    />
-    <menuitem
-            id="pm_term_menu"
-            name="Terms"
-            parent='pm_root_menu'
-            action="pm_term_action"
-            sequence="20"
-    />
-    <menuitem
-            id="pm_sub_term_menu"
-            name="SubTerms"
-            parent='pm_root_menu'
-            action="pm_sub_term_action"
-            sequence="30"
-    />
-    <menuitem
+            sequence="10"
+        />
+        <menuitem
             id="pm_purchase_request_menu"
             name="Purchase Requests"
-            parent='pm_root_menu'
+            parent='pm_project_root_menu'
             action="pm_purchase_request_action"
-            sequence="40"
-    />
-    <menuitem
-            id="pm_employee_menu"
-            name="Employees"
-            parent='pm_root_menu'
-            action="pm_employee_action"
-            sequence="50"
-    />
-    <menuitem
+            sequence="20"
+        />
+
+        <menuitem
             id="pm_tool_menu"
             name="Tools"
-            parent='pm_root_menu'
+            parent='pm_project_root_menu'
             action="pm_tool_action"
-            sequence="60"
+            sequence="30"
+        />
+
+
+    <menuitem
+        id="pm_term_root_menu"
+        name="Terms"
+        parent='pm_root_menu'
+        sequence="30"
     />
+        <menuitem
+            id="pm_term_menu"
+            name="Terms"
+            parent='pm_term_root_menu'
+            action="pm_term_action"
+            sequence="10"
+        />
+        <menuitem
+            id="pm_sub_term_menu"
+            name="SubTerms"
+            parent='pm_term_root_menu'
+            action="pm_sub_term_action"
+            sequence="20"
+        />
+        <menuitem
+            id="pm_contractor_subterm_menu"
+            name="Contractor"
+            parent='pm_term_root_menu'
+            action="contractor_subterm_action"
+            sequence="30"
+        />
+        <menuitem
+        id="pm_employee_menu"
+        name="Employees"
+        parent='pm_term_root_menu'
+        action="pm_employee_action"
+        sequence="40"
+        />
+    
+    <menuitem
+        id="pm_contractor_menu"
+        name="Contractor"
+        parent='pm_root_menu'
+        action="contractor_action"
+        sequence="40"
+    />
+
 </odoo>

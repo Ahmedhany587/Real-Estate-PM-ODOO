@@ -31,8 +31,23 @@
                                 <tree editable="bottom">
                                     <field name="name"/>
                                     <field name="needed_qty"/>
+                                    <field name="assigned_qty"/>
                                     <field name="standard_price"/>
                                     <field name="detailed_type"/>
+                                </tree>
+                            </field> 
+                        </page>
+                        <page string="Contractors">
+                            <field name="contractor_subterm_ids">
+                                <tree editable="bottom">
+                                    <field name="sub_term_id" column_invisible="1"/>
+                                    <field name="product_ids" column_invisible="1"/>
+                                    <field name="contractor_id"/>
+                                    <field name="service_id"/>
+                                    <field name="qty"/>
+                                    <field name="progress"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
                                 </tree>
                             </field> 
                         </page>
