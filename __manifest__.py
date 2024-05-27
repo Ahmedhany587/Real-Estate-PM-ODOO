@@ -3,10 +3,11 @@
     'name': "Real Estate Management",
 
     'summary': """
-        This module handle the Advanced Project""",
+        This module handle the Advanced Project management with Cost tracking.. """,
 
     'description': """
-        Long description of module's purpose
+        Managing Construction projects ( Contracts, Employees, Terms, SubTerms, Purchasing, Contractors, Contractors Bills,
+        date for every term & subterm)
     """,
 
     'author': "Quadova",
@@ -16,19 +17,19 @@
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '1.0',
+    'version': '1.1.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','product', 'stock','purchase'],
+    'depends': ['base', 'product', 'stock', 'purchase'],
 
     # always loaded
     'data': [
         # security
         'security/ir.model.access.csv',
-        
+
         # wizard
         'wizard/pm_purchase_request.xml',
-        
+
         # views
         'views/pm_contract_view.xml',
         'views/pm_project_view.xml',
@@ -42,7 +43,7 @@
 
         # seq
         'data/pm_data.xml',
-        
+
         # menu
         'views/pm_menu.xml',
     ],
