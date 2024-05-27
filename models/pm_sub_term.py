@@ -63,19 +63,41 @@ class ContractorSubTerm(models.Model):
         ('assigned', 'Assigned'), 
         ('started', 'Started'),
         ('finished', 'Finished'),
-        ('cacelled', 'Cancelled'),
+        ('cancelled', 'Cancelled'),
         ], 
         default='assigned')
+
+    qty_in = fields.Integer(string='Quantity In', default=0)
 
     #### Actions ####
     def action_cancel(self):
         self.state = 'cancelled'
+        to_make = self.qty - self.progress
+        self.service_id.assigned_qty -= to_make
 
     def action_start(self):
         self.state = 'started'
 
     def action_finish(self):
         self.state = 'finished'
+
+    def add_qty_in(self):
+        try:
+            if self.state != 'started':
+                
+                raise models.ValidationError('Contractor Sub-Term must be started')
+
+            to_make = self.qty - self.progress
+            if self.qty_in > to_make:
+                
+                raise models.ValidationError(f'Quantity In must be at most {to_make}')
+            
+            self.progress += self.qty_in
+            
+            if self.progress == self.qty:
+                self.action_finish()
+        finally:
+            self.qty_in = 0
 
     #### Compute ####
     @api.depends('sub_term_id','contractor_id')

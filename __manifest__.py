@@ -35,6 +35,7 @@
         'views/pm_project_view.xml',
         'views/pm_term_view.xml',
         'views/pm_sub_term_view.xml',
+        'views/pm_contractor_view.xml',
         'views/pm_purchase_request_view.xml',
         'views/pm_employee_view.xml',
         'views/pm_tool_view.xml',

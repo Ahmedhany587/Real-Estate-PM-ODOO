@@ -69,11 +69,19 @@
             sequence="30"
         />
         <menuitem
-            id="pm_employee_menu"
-            name="Employees"
-            parent='pm_term_root_menu'
-            action="pm_employee_action"
-            sequence="40"
+        id="pm_employee_menu"
+        name="Employees"
+        parent='pm_term_root_menu'
+        action="pm_employee_action"
+        sequence="40"
         />
+    
+    <menuitem
+        id="pm_contractor_menu"
+        name="Contractor"
+        parent='pm_root_menu'
+        action="contractor_action"
+        sequence="40"
+    />
 
 </odoo>
