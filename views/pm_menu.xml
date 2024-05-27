@@ -65,7 +65,7 @@
             id="pm_contractor_subterm_menu"
             name="Contractor"
             parent='pm_term_root_menu'
-            action="contractor_subterm_action"
+            action="contractor_action"
             sequence="30"
         />
         <menuitem
