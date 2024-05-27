@@ -3,8 +3,7 @@
     'name': "Real Estate Management",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        This module handle the Advanced Project""",
 
     'description': """
         Long description of module's purpose
@@ -38,6 +37,8 @@
         'views/pm_purchase_request_view.xml',
         'views/pm_employee_view.xml',
         'views/pm_tool_view.xml',
+        'views/pm_contractor_subterm_view.xml',
+        'views/pm_contractor_view.xml',
 
         # seq
         'data/pm_data.xml',
