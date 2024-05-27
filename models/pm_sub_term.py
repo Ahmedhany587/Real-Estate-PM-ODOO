@@ -63,7 +63,7 @@ class ContractorSubTerm(models.Model):
         ('assigned', 'Assigned'), 
         ('started', 'Started'),
         ('finished', 'Finished'),
-        ('cacelled', 'Cancelled'),
+        ('cancelled', 'Cancelled'),
         ], 
         default='assigned')
 
@@ -72,6 +72,8 @@ class ContractorSubTerm(models.Model):
     #### Actions ####
     def action_cancel(self):
         self.state = 'cancelled'
+        to_make = self.qty - self.progress
+        self.service_id.assigned_qty -= to_make
 
     def action_start(self):
         self.state = 'started'
