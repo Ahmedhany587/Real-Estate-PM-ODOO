@@ -38,6 +38,7 @@
         'views/pm_purchase_request_view.xml',
         'views/pm_employee_view.xml',
         'views/pm_tool_view.xml',
+        'views/pm_contractor_subterm_view.xml',
 
         # seq
         'data/pm_data.xml',
