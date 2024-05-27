@@ -80,15 +80,22 @@ class ContractorSubTerm(models.Model):
         self.state = 'finished'
 
     def add_qty_in(self):
-        if self.state != 'started':
-            raise models.ValidationError('Contractor Sub-Term must be started')
+        try:
+            if self.state != 'started':
+                
+                raise models.ValidationError('Contractor Sub-Term must be started')
 
-        to_make = self.qty - self.progress
-        if self.qty_in > to_make:
-            raise models.ValidationError(f'Quantity In must be at most {to_make}')
-        
-        self.progress += self.qty_in
-        self.qty_in = 0
+            to_make = self.qty - self.progress
+            if self.qty_in > to_make:
+                
+                raise models.ValidationError(f'Quantity In must be at most {to_make}')
+            
+            self.progress += self.qty_in
+            
+            if self.progress == self.qty:
+                self.action_finish()
+        finally:
+            self.qty_in = 0
 
     #### Compute ####
     @api.depends('sub_term_id','contractor_id')

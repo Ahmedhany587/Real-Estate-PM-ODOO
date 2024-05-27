@@ -22,8 +22,9 @@
                                 
                                 <field name="state" readonly="1"/>
                                 <field name="service_id" readonly="1"/>
-                                <field name="qty_in" />
-                                <button name="add_qty_in" title="Add" type="object" icon="fa-plus"/>
+                                <field name="qty_in" readonly="state == 'finished'"/>
+                                <button name="add_qty_in" title="Add" type="object" 
+                                    invisible='state == "finished"' icon="fa-plus"/>
                                 <field name="qty" readonly="1"/>
                                 <field name="progress" readonly="1"/>
                             </tree>
