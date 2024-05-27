@@ -80,6 +80,9 @@ class ContractorSubTerm(models.Model):
         self.state = 'finished'
 
     def add_qty_in(self):
+        if self.state != 'started':
+            raise models.ValidationError('Contractor Sub-Term must be started')
+
         to_make = self.qty - self.progress
         if self.qty_in > to_make:
             raise models.ValidationError(f'Quantity In must be at most {to_make}')
