@@ -2,30 +2,57 @@ from odoo import api, fields, models
 
 
 class Contract(models.Model):
+    """
+    Model that represents a real estate contract with a customer.
+    """
     _name = 'pm.contract'
     _description = 'Real Estate Contract with the Customer'
 
+    # Name of the contract
     name = fields.Char()
 
+    # Customer associated with the contract
     partner_id = fields.Many2one(
         comodel_name='res.partner',
-        string="Customer",
-        required=True, change_default=True, index=True,
-        tracking=1)
+        string="Customer",  
+        required=True,  
+        index=True,  
+    )
 
-    contract_date = fields.Date(string="Contract Date:", required=False, default=lambda self: fields.Date.today())
+    # Date of the contract
+    contract_date = fields.Date(
+        string="Contract Date:",  
+        required=False,  
+        default=lambda self: fields.Date.today()  # Default value is today's date
+    )
 
-    project_id = fields.Many2one(comodel_name='pm.project', string="Project", ondelete='restrict')  # Restrict deletion
+    # Project associated with the contract
+    project_id = fields.Many2one(
+        comodel_name='pm.project',
+        string="Project",  
+        ondelete='restrict'  
+    )
 
-    doc_ids = fields.One2many('pm.document', 'contract_id', string='Documents')
+    # Documents associated with the contract
+    doc_ids = fields.One2many(
+        'pm.document',  
+        'contract_id',  # Field in the pm.document model that references this contract
+        string='Documents'  
+    )
 
 class Document(models.Model):
+    """
+    Model that represents a document that is associated with a contract.
+    """
     _name = 'pm.document'
     _description = 'PM Document'
 
-
     name = fields.Char(string='Name')
+
+    #: The actual binary content of the document.
     document = fields.Binary(string='Document')
 
-    # The property that the document belongs to
-    contract_id = fields.Many2one('pm.contract', string='Contract')
+    #: The property that the document belongs to.
+    contract_id = fields.Many2one(
+        'pm.contract', string='Contract',
+        help='The contract that this document is associated with.')
