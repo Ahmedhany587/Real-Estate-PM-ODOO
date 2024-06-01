@@ -12,14 +12,11 @@ class Contractor(models.Model):
     )
     
     ### views ###
-    @api.model
-    # FIXME: Look into the 2 arg errors when make_bill is called
     def make_bill(self):
         """
         Create an invoice for each sub-term in `contractor_subterm_ids`
         that is in a finished or cancelled state.
         """
-        
         # List to store the invoice line IDs
         invoice_line_ids =  []
 
