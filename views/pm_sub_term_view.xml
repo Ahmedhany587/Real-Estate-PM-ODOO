@@ -33,7 +33,7 @@
                                     <field name="needed_qty"/>
                                     <field name="assigned_qty"/>
                                     <field name="standard_price"/>
-                                    <field name="detailed_type"/>
+                                    <field name="detailed_type" readonly="1"/>
                                 </tree>
                             </field>
                         </page>
