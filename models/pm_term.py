@@ -14,7 +14,7 @@ class Term(models.Model):
     #: Project to which the term belongs.
     project_id = fields.Many2one(comodel_name='pm.project', string="Project", ondelete='cascade')
     #: Contractor who is performing the term.
-    contractor_id = fields.Many2one(comodel_name='res.partner', string="Contractor", ondelete='restrict')
+    contractor_ids = fields.Many2many(comodel_name='res.partner', string="Contractors", ondelete='restrict')
     #: Employees working on the term.
     employee_ids = fields.Many2many(comodel_name='pm.employee', string="Employees", ondelete='restrict')
     #: Tools used in the term.
