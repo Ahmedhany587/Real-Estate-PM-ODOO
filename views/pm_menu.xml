@@ -78,7 +78,7 @@
     
     <menuitem
         id="pm_contractor_menu"
-        name="Contractor"
+        name="Contractors Workload"
         parent='pm_root_menu'
         action="contractor_action"
         sequence="40"
