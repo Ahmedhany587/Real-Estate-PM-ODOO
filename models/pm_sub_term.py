@@ -16,7 +16,7 @@ class SubTerm(models.Model):
 
     product_ids = fields.Many2many(comodel_name='product.template', string="Products", ondelete='restrict')  # List of products used in the sub-term
 
-    cost  = fields.Integer(string='Cost', default=0, compute='_compute_cost')  # Total cost of the sub-term
+    cost = fields.Integer(string='Cost', default=0, compute='_compute_cost')  # Total cost of the sub-term
 
     contractor_subterm_ids = fields.One2many(comodel_name='pm.contractor.subterm', inverse_name='sub_term_id', 
                                              string="Contractor Sub-Term", ondelete='restrict')  # List of contractor sub-terms

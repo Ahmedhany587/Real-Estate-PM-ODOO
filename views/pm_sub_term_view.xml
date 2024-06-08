@@ -32,7 +32,7 @@
                                     <field name="name"/>
                                     <field name="needed_qty"/>
                                     <field name="assigned_qty"/>
-                                    <field name="uom_id"/>
+                                    <field name="uom_id" readonly="1"/>
                                     <field name="standard_price"/>
                                     <field name="detailed_type" readonly="1"/>
                                 </tree>
