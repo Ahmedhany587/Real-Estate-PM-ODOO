@@ -47,7 +47,7 @@
                                     <field name="contractor_id"/>
                                     <field name="service_id"/>
                                     <field name="qty"/>
-                                    <field name="progress"/>
+                                    <field name="progress" readonly="1"/>
                                     <field name="start_date"/>
                                     <field name="end_date"/>
                                 </tree>
