@@ -6,7 +6,7 @@ class Contractor(models.Model):
 
     contractor_subterm_ids = fields.One2many(
         comodel_name='pm.contractor.subterm', 
-        inverse_name='contractor_id', 
+        inverse_name='contractor_ids',
         string="Contractor Sub-Term", 
         ondelete='restrict'
     )

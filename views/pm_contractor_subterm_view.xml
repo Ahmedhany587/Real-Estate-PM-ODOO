@@ -7,8 +7,8 @@
         <field name="model">pm.contractor.subterm</field>
         <field name="arch" type="xml">
             <search string="Search contractor subterm">
-                <field name="contractor_id"/>
-                <filter name="group_by_contractor" string="Group By Contractor" context="{'group_by': 'contractor_id'}" />
+                <field name="contractor_ids"/>
+                <filter name="group_by_contractor" string="Group By Contractor" context="{'group_by': 'contractor_ids'}" />
             </search>
         </field>
     </record>
@@ -19,14 +19,14 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_start" string="Start"  type="object" class="oe_highlight"
-                    invisible='state != "assigned"'/>
-                    
-                    <button name="action_finish" string="Finish"  type="object" class="oe_highlight"
-                    invisible='state != "started"'/>
-                    
-                    <button name="action_cancel" string="Cancel"  type="object" class="oe_highlight"
-                    invisible='state == "finished"'/>
+                    <button name="action_start" string="Start" type="object" class="oe_highlight"
+                    invisible="state != 'assigned'"/>
+
+                    <button name="action_finish" string="Finish" type="object" class="oe_highlight"
+                    invisible="state != 'started'"/>
+
+                    <button name="action_cancel" string="Cancel" type="object" class="oe_highlight"
+                    invisible="state == 'finished'"/>
 
                     <field name="state" widget="statusbar"
                         statusbar_visible="assigned, started, finished" />
@@ -38,13 +38,12 @@
                         </group>
                     </h1>
                     <group>
-                        <field name="contractor_id"/>
+                        <field name="contractor_ids"/>
                         <field name="sub_term_id"/>
                         <field name="service_id"/>
-                        <field name="product_ids" invisible='1'/>
+                        <field name="product_ids" invisible="1"/>
                     </group>
                     <group>
-                        
                         <group>
                             <field name="start_date" string="Start Date" />
                             <field name="end_date" string="End Date" />
@@ -60,7 +59,7 @@
     </record>
 
     <record id="contractor_subterm_action" model="ir.actions.act_window">
-        <field name="name">Real Estate Contractor Subterm </field>
+        <field name="name">Real Estate Contractor Subterm</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">pm.contractor.subterm</field>
         <field name="view_mode">tree,form</field>
@@ -69,6 +68,6 @@
                 "search_default_group_by_contractor": 1,
             }
         </field>
-        
     </record>
+
 </odoo>
