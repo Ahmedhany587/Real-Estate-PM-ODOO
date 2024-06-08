@@ -63,7 +63,7 @@
         />
         <menuitem
             id="pm_contractor_subterm_menu"
-            name="Contractor"
+            name="Contractor Workload"
             parent='pm_term_root_menu'
             action="contractor_subterm_action"
             sequence="30"
@@ -78,7 +78,7 @@
     
     <menuitem
         id="pm_contractor_menu"
-        name="Contractors Workload"
+        name="Contractor"
         parent='pm_root_menu'
         action="contractor_action"
         sequence="40"
