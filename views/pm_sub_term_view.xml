@@ -45,7 +45,7 @@
                                 <tree editable="bottom">
                                     <field name="sub_term_id" column_invisible="1"/>
                                     <field name="product_ids" column_invisible="1"/>
-                                    <field name="contractor_ids"/>
+                                    <field name="contractor_id"/>
                                     <field name="service_id"/>
                                     <field name="qty"/>
                                     <field name="progress" readonly="1"/>

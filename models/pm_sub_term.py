@@ -74,7 +74,7 @@ class PmContractorSubTerm(models.Model):
                                  domain="[('id', 'in', product_ids), ('detailed_type', '=', 'service')]",
                                  ondelete='restrict')
     # Reference to the contractors
-    contractor_ids = fields.Many2many(comodel_name='res.partner', string="Contractors", ondelete='restrict')
+    contractor_id = fields.Many2one(comodel_name='res.partner', string="Contractors", ondelete='restrict')
 
     # Quantity of the service product assigned to the contractor sub-term
     qty = fields.Integer(string="Quantity", default=0)
@@ -84,6 +84,7 @@ class PmContractorSubTerm(models.Model):
 
     # Progress of the contractor sub-term
     progress = fields.Integer(string='Progress', default=0)
+    qty_invoiced = fields.Integer(string='Quantity Invoiced', default=0)
 
     # State of the contractor sub-term
     state = fields.Selection(string='State', selection=[
@@ -136,13 +137,13 @@ class PmContractorSubTerm(models.Model):
             self.qty_in = 0
 
     #### Compute ####
-    @api.depends('sub_term_id', 'contractor_ids')
+    @api.depends('sub_term_id', 'contractor_id')
     def _compute_name(self):
         """
         Compute the name of the contractor sub-term.
         """
         for rec in self:
-            contractors = ', '.join(rec.contractor_ids.mapped('name'))
+            contractors = ', '.join(rec.contractor_id.mapped('name'))
             rec.name = f'{rec.sub_term_id.name} - {contractors}'
 
     #### Constraints ####
