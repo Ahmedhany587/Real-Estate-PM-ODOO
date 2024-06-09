@@ -16,7 +16,7 @@
                     <group>
                         <group>
                             <field name="project_id"/>
-                            <field name="contractor_ids"/>
+                            <field name="contractor_ids" widget="many2many_tags"/>
                         </group>
                         <group>
                             <field name="start_date"/>
