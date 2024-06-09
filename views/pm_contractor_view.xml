@@ -63,6 +63,7 @@
                                             invisible='state == "finished"' icon="fa-plus"/>
                                     <field name="qty" readonly="1"/>
                                     <field name="progress" readonly="1"/>
+                                    <field name="qty_invoiced" readonly="1"/>
                                 </tree>
                             </field>
                         </page>
@@ -83,11 +84,25 @@
         </field>
     </record>
 
+    <!-- <record id="view_custom_form" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//button[@class='o_form_button_save']" position="replace">
+                 <dev> asdasdasd </dev>
+            </xpath>
+
+        </field>
+    </record> -->
+
     <!-- Action for Contractor Views -->
     <record id="contractor_action" model="ir.actions.act_window">
         <field name="name">Real Estate Contractor</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('contractor_subterm_ids', '!=', false)]</field>
     </record>
 
     <!-- Tree View Sequence for Contractor Action -->

@@ -26,7 +26,8 @@ class Contract(models.Model):
         comodel_name='pm.project',
         string="Project",
         ondelete='restrict',
-        tracking=True
+        tracking=True,
+        domain = "[('contract_id', '=', False)]"  
     )
     doc_ids = fields.One2many(
         'pm.document',
@@ -67,6 +68,13 @@ class Contract(models.Model):
         else:
             for field in self._fields:
                 self._fields[field].readonly = False
+
+    @api.onchange('project_id')
+    def _onchange_project_id(self):
+        """
+        Set the contract in the project model.
+        """            
+        self.project_id.contract_id = self._origin
 
 class Document(models.Model):
     """
