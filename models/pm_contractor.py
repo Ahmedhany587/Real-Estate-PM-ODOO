@@ -22,8 +22,8 @@ class Contractor(models.Model):
 
         # Iterate over each sub-term in `contractor_subterm_ids`
         for subterm in self.contractor_subterm_ids:
-            if subterm.state not in ('finished', 'cancelled'):
-                continue
+            # if subterm.state not in ('finished', 'cancelled'):
+            #     continue
 
             # Create an invoice line for the sub-term
             invoice_line_ids.append(
@@ -52,3 +52,6 @@ class Contractor(models.Model):
 
         # Return the action to open the invoice
         return action
+    
+class Bills(models.Model):
+    _inherit = 'account.move'
