@@ -11,7 +11,8 @@ class Project(models.Model):
     name = fields.Char(string='Name')  # Name of the project
 
     contract_id = fields.Many2one(
-        comodel_name='pm.contract', string="Contract", readonly=False
+        comodel_name='pm.contract', string="Contract", readonly=False,
+        domain = "[('project_id', '=', False)]"  
     )  # Contract associated with the project
 
     customer = fields.Many2one(
@@ -35,3 +36,9 @@ class Project(models.Model):
         for rec in self:
             rec.total_cost = sum(rec.term_ids.mapped('total_cost'))
 
+    @api.onchange('contract_id')
+    def _onchange_contract_id(self):
+        """
+        Set the project in the contract model.
+        """
+        self.contract_id.project_id = self._origin

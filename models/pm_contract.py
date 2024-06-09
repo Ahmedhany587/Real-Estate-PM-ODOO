@@ -30,7 +30,8 @@ class Contract(models.Model):
     project_id = fields.Many2one(
         comodel_name='pm.project',
         string="Project",  
-        ondelete='restrict'  
+        ondelete='restrict',
+        domain = "[('contract_id', '=', False)]"  
     )
 
     # Documents associated with the contract
@@ -39,6 +40,13 @@ class Contract(models.Model):
         'contract_id',  # Field in the pm.document model that references this contract
         string='Documents'  
     )
+
+    @api.onchange('project_id')
+    def _onchange_project_id(self):
+        """
+        Set the contract in the project model.
+        """            
+        self.project_id.contract_id = self._origin
 
 class Document(models.Model):
     """
